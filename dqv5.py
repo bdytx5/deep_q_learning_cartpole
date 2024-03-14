@@ -56,11 +56,8 @@ e_model = cpmodel(5, 1)
 epsilon = 1.0  # Initial epsilon value (start with full exploration)
 epsilon_min = 0.2  # Minimum epsilon value (residual exploration)
 epsilon_decay_rate = 0.995  # Rate at which epsilon decays per iteration
-
-
 update_every = 20  # Update target network every 20 episodes, adjust as needed
 gamma = 0.99
-
 replay_buffer = deque([], maxlen=10000)
 
 
@@ -218,7 +215,7 @@ for st in range():
         if len(replay_buffer) >= 1000:
             loss = optimize_model(policy_model=model, target_model=e_model)
             avg_score = evaluate_model(model=model, env=env, n_episodes=10)
-            wandb.log({'loss': loss, 'average_score': avg_score, 'step': st})
+            wandb.log({'average_score': avg_score, 'step': st})
 
             if avg_score > best_avg_score:
                 best_avg_score = avg_score
